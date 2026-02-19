@@ -6,8 +6,7 @@ interface DashboardHeaderProps {
 
 const DashboardHeader = ({ onOpenTheme }: DashboardHeaderProps) => {
   return (
-    <header className="sticky top-0 z-40 h-16 bg-[hsl(var(--surface-glass))] backdrop-blur-[20px] border-b border-border shadow-header flex items-center justify-between px-6"
-      style={{ background: "hsla(213, 22%, 11%, 0.8)" }}
+    <header className="sticky top-0 z-40 h-16 bg-sidebar backdrop-blur-[20px] border-b border-border shadow-header flex items-center justify-between px-6"
     >
       {/* Left side */}
       <div className="flex items-center gap-3">
