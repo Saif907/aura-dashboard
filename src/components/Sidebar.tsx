@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Home,
   Monitor,
@@ -10,36 +9,31 @@ import {
   BarChart3,
   Radio,
   FolderOpen,
-  Target,
   ChevronRight,
   ChevronLeft,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface NavItem {
   icon: React.ElementType;
   label: string;
-  active?: boolean;
   badge?: string;
   hasArrow?: boolean;
-  comingSoon?: boolean;
+  path?: string;
 }
 
 const mainNavItems: NavItem[] = [
-  { icon: Home, label: "Dashboard", active: true },
+  { icon: Home, label: "Dashboard", path: "/" },
   { icon: Monitor, label: "Accounts", hasArrow: true },
   { icon: CreditCard, label: "Plans", badge: "NEW", hasArrow: true },
   { icon: TrendingUp, label: "Live Trade" },
   { icon: PenLine, label: "Daily Journal" },
   { icon: Table2, label: "Close Trade" },
-  { icon: BookOpen, label: "Notebook" },
+  { icon: BookOpen, label: "Notebook", path: "/notebook" },
   { icon: BarChart3, label: "Reports" },
   { icon: Radio, label: "News & Sessions" },
   { icon: FolderOpen, label: "File Manager", badge: "NEW" },
-];
-
-const comingSoonItems: NavItem[] = [
-  { icon: Target, label: "Goals", comingSoon: true },
 ];
 
 interface SidebarProps {
@@ -48,87 +42,72 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ collapsed, onToggle }: SidebarProps) => {
+  const location = useLocation();
+
   return (
-    <aside
-      className={cn(
-        "fixed left-0 top-0 h-screen bg-sidebar shadow-sidebar z-50 transition-all duration-300 flex flex-col",
-        collapsed ? "w-[80px]" : "w-[280px]"
-      )}
-    >
-      {/* Logo area */}
-      <div className="flex items-center justify-between h-16 px-4">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-sm">T</span>
+    <>
+      <aside
+        className={cn(
+          "fixed left-0 top-0 h-screen bg-sidebar shadow-sidebar z-50 transition-all duration-300 flex flex-col border-r border-border",
+          collapsed ? "w-[80px]" : "w-[280px]"
+        )}
+      >
+        {/* Logo area */}
+        <div className="flex items-center h-16 px-4">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+              <span className="text-primary-foreground font-bold text-sm">T</span>
+            </div>
           </div>
         </div>
-        <button
-          onClick={onToggle}
-          className="w-7 h-7 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
-        >
-          {collapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
-        </button>
-      </div>
 
-      {/* Menu label */}
-      {!collapsed && (
-        <div className="px-6 pt-4 pb-2">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
-            Menu
-          </span>
-        </div>
-      )}
-
-      {/* Nav items */}
-      <nav className="flex-1 px-3 space-y-0.5 overflow-y-auto scrollbar-sidebar">
-        {mainNavItems.map((item) => (
-          <NavItemRow key={item.label} item={item} collapsed={collapsed} />
-        ))}
-
-        {/* Coming soon section */}
+        {/* Menu label */}
         {!collapsed && (
-          <div className="px-3 pt-6 pb-2">
+          <div className="px-6 pt-4 pb-2">
             <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
-              Coming Soon
+              Menu
             </span>
           </div>
         )}
-        {comingSoonItems.map((item) => (
-          <NavItemRow key={item.label} item={item} collapsed={collapsed} />
-        ))}
-      </nav>
 
-      {/* User area at bottom */}
-      <div className="p-4 border-t border-border">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground text-sm">
-            👤
-          </div>
-          {!collapsed && (
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-semibold text-foreground truncate">User</span>
-                <span className="text-[10px] bg-primary/20 text-primary px-1.5 py-0.5 rounded font-medium">
-                  User
-                </span>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-    </aside>
+        {/* Nav items */}
+        <nav className="flex-1 px-3 space-y-0.5 overflow-y-auto scrollbar-sidebar">
+          {mainNavItems.map((item) => (
+            <NavItemRow
+              key={item.label}
+              item={item}
+              collapsed={collapsed}
+              active={item.path ? location.pathname === item.path : false}
+            />
+          ))}
+        </nav>
+      </aside>
+
+      {/* Toggle button at the edge of sidebar */}
+      <button
+        onClick={onToggle}
+        className={cn(
+          "fixed top-1/2 -translate-y-1/2 z-[51] w-6 h-6 rounded-full border border-border bg-card flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-accent transition-all duration-300 shadow-sm",
+          collapsed ? "left-[68px]" : "left-[268px]"
+        )}
+      >
+        {collapsed ? <ChevronRight size={12} /> : <ChevronLeft size={12} />}
+      </button>
+    </>
   );
 };
 
-function NavItemRow({ item, collapsed }: { item: NavItem; collapsed: boolean }) {
+function NavItemRow({ item, collapsed, active }: { item: NavItem; collapsed: boolean; active: boolean }) {
+  const navigate = useNavigate();
+
   return (
     <button
+      onClick={() => item.path && navigate(item.path)}
       className={cn(
         "w-full flex items-center gap-3 h-11 rounded-lg px-3 transition-colors text-sm font-normal",
-        item.active
+        active
           ? "bg-sidebar-accent text-sidebar-accent-foreground"
-          : "text-sidebar-foreground hover:bg-sidebar-accent/50",
-        item.comingSoon && "opacity-50"
+          : "text-sidebar-foreground hover:bg-sidebar-accent/50"
       )}
     >
       <item.icon size={20} className="shrink-0" />
