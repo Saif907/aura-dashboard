@@ -80,7 +80,7 @@ const Sidebar = ({ collapsed, onToggle }: SidebarProps) => {
       )}
 
       {/* Nav items */}
-      <nav className="flex-1 px-3 space-y-0.5 overflow-y-auto">
+      <nav className="flex-1 px-3 space-y-0.5 overflow-y-auto scrollbar-sidebar">
         {mainNavItems.map((item) => (
           <NavItemRow key={item.label} item={item} collapsed={collapsed} />
         ))}

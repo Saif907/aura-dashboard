@@ -1,6 +1,10 @@
-import { Bell, Calendar, ChevronDown, Eye, MessageCircle, Users, X } from "lucide-react";
+import { Bell, Calendar, ChevronDown, Eye, MessageCircle, Palette, Users, X } from "lucide-react";
 
-const DashboardHeader = () => {
+interface DashboardHeaderProps {
+  onOpenTheme?: () => void;
+}
+
+const DashboardHeader = ({ onOpenTheme }: DashboardHeaderProps) => {
   return (
     <header className="sticky top-0 z-40 h-16 bg-[hsl(var(--surface-glass))] backdrop-blur-[20px] border-b border-border shadow-header flex items-center justify-between px-6"
       style={{ background: "hsla(213, 22%, 11%, 0.8)" }}
@@ -34,12 +38,16 @@ const DashboardHeader = () => {
         <button className="w-9 h-9 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors">
           <Bell size={20} />
         </button>
+        <button
+          onClick={onOpenTheme}
+          className="w-9 h-9 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <Palette size={20} />
+        </button>
         <button className="w-9 h-9 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors relative">
           <MessageCircle size={20} />
           <span className="absolute top-1 right-1 w-2 h-2 bg-loss rounded-full" />
         </button>
-
-        {/* Avatar */}
         <div className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-foreground" style={{ backgroundColor: "hsl(36, 90%, 50%)" }}>
           T
         </div>
