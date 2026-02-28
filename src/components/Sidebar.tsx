@@ -9,6 +9,7 @@ import {
   BarChart3,
   Radio,
   FolderOpen,
+  CalendarDays,
   ChevronRight,
   ChevronLeft,
 } from "lucide-react";
@@ -32,6 +33,7 @@ const mainNavItems: NavItem[] = [
   { icon: Table2, label: "Close Trade" },
   { icon: BookOpen, label: "Notebook", path: "/notebook" },
   { icon: BarChart3, label: "Reports" },
+  { icon: CalendarDays, label: "Calendar", path: "/calendar" },
   { icon: Radio, label: "News & Sessions" },
   { icon: FolderOpen, label: "File Manager", badge: "NEW" },
 ];
