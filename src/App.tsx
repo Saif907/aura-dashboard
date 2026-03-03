@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Notebook from "./pages/Notebook";
 import Calendar from "./pages/Calendar";
 import NotFound from "./pages/NotFound";
+import Auth from "./pages/Auth";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/notebook" element={<Notebook />} />
             <Route path="/calendar" element={<Calendar />} />
+            <Route path="/auth" element={<Auth />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
