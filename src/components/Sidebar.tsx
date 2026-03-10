@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useTheme } from "@/contexts/ThemeContext";
 
 interface NavItem {
   icon: React.ElementType;
@@ -45,19 +46,23 @@ interface SidebarProps {
 
 const Sidebar = ({ collapsed, onToggle }: SidebarProps) => {
   const location = useLocation();
+  const { uiDesign } = useTheme();
 
   return (
     <>
       <aside
         className={cn(
-          "fixed left-0 top-0 h-screen bg-sidebar shadow-sidebar z-50 transition-all duration-300 flex flex-col border-r border-border",
+          "sidebar-design fixed left-0 top-0 h-screen bg-sidebar z-50 transition-all duration-300 flex flex-col border-r border-border",
           collapsed ? "w-[80px]" : "w-[280px]"
         )}
       >
         {/* Logo area */}
-        <div className="flex items-center h-16 px-4">
+        <div className={cn("flex items-center h-16 px-4", uiDesign === "phantom-noir" && "h-14")}>
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+            <div className={cn(
+              "w-8 h-8 bg-primary flex items-center justify-center",
+              uiDesign === "phantom-noir" ? "rounded" : "rounded-lg"
+            )}>
               <span className="text-primary-foreground font-bold text-sm">T</span>
             </div>
           </div>
@@ -66,20 +71,28 @@ const Sidebar = ({ collapsed, onToggle }: SidebarProps) => {
         {/* Menu label */}
         {!collapsed && (
           <div className="px-6 pt-4 pb-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
+            <span className={cn(
+              "text-[11px] font-bold uppercase tracking-wider text-muted-foreground",
+              uiDesign === "burnt-forge" && "text-[10px] tracking-[0.2em]"
+            )}>
               Menu
             </span>
           </div>
         )}
 
         {/* Nav items */}
-        <nav className="flex-1 px-3 space-y-0.5 overflow-y-auto scrollbar-sidebar">
+        <nav className={cn(
+          "flex-1 px-3 space-y-0.5 overflow-y-auto scrollbar-sidebar",
+          uiDesign === "phantom-noir" && "space-y-[2px]",
+          uiDesign === "polar-night" && "space-y-1"
+        )}>
           {mainNavItems.map((item) => (
             <NavItemRow
               key={item.label}
               item={item}
               collapsed={collapsed}
               active={item.path ? location.pathname === item.path : false}
+              design={uiDesign}
             />
           ))}
         </nav>
@@ -99,14 +112,16 @@ const Sidebar = ({ collapsed, onToggle }: SidebarProps) => {
   );
 };
 
-function NavItemRow({ item, collapsed, active }: { item: NavItem; collapsed: boolean; active: boolean }) {
+function NavItemRow({ item, collapsed, active, design }: { item: NavItem; collapsed: boolean; active: boolean; design: string }) {
   const navigate = useNavigate();
 
   return (
     <button
       onClick={() => item.path && navigate(item.path)}
       className={cn(
-        "w-full flex items-center gap-3 h-11 rounded-lg px-3 transition-colors text-sm font-normal",
+        "w-full flex items-center gap-3 h-11 px-3 transition-colors text-sm font-normal",
+        design === "phantom-noir" ? "rounded" : "rounded-lg",
+        design === "polar-night" && "h-10",
         active
           ? "bg-sidebar-accent text-sidebar-accent-foreground"
           : "text-sidebar-foreground hover:bg-sidebar-accent/50"
@@ -117,7 +132,10 @@ function NavItemRow({ item, collapsed, active }: { item: NavItem; collapsed: boo
         <>
           <span className="flex-1 text-left truncate">{item.label}</span>
           {item.badge && (
-            <span className="text-[10px] bg-primary text-primary-foreground px-1.5 py-0.5 rounded font-bold">
+            <span className={cn(
+              "text-[10px] bg-primary text-primary-foreground px-1.5 py-0.5 font-bold",
+              design === "phantom-noir" ? "rounded" : "rounded"
+            )}>
               {item.badge}
             </span>
           )}

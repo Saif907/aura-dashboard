@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { X, RotateCcw, Maximize2, Sun, Moon, Monitor, Palette } from "lucide-react";
-import { useTheme, ThemeMode, ThemePreset, ThemeFont } from "@/contexts/ThemeContext";
+import { X, RotateCcw, Maximize2, Sun, Moon, Monitor } from "lucide-react";
+import { useTheme, ThemeMode, ThemePreset, ThemeFont, UIDesign } from "@/contexts/ThemeContext";
 import { cn } from "@/lib/utils";
 import { Slider } from "@/components/ui/slider";
 
@@ -26,19 +25,53 @@ const modes: { id: ThemeMode; label: string; icon: React.ElementType }[] = [
   { id: "system", label: "System", icon: Monitor },
 ];
 
+const uiDesigns: { id: UIDesign; label: string; description: string; colors: string[] }[] = [
+  {
+    id: "default",
+    label: "Default",
+    description: "Original theme",
+    colors: ["#1C2536", "#68CDF9", "#2A3447"],
+  },
+  {
+    id: "polar-night",
+    label: "Polar Night",
+    description: "Deep navy, electric blue frost",
+    colors: ["#0C1527", "#3B82F6", "#1A2744"],
+  },
+  {
+    id: "burnt-forge",
+    label: "Burnt Forge",
+    description: "Charcoal warmth, copper ember",
+    colors: ["#1A1410", "#EA580C", "#2A1E15"],
+  },
+  {
+    id: "phantom-noir",
+    label: "Phantom Noir",
+    description: "True black, silver elegance",
+    colors: ["#0A0A0A", "#8FAABE", "#121212"],
+  },
+  {
+    id: "emerald-vault",
+    label: "Emerald Vault",
+    description: "Dark forest, emerald & gold",
+    colors: ["#0A1A14", "#10B981", "#142A20"],
+  },
+];
+
 interface ThemePanelProps {
   open: boolean;
   onClose: () => void;
 }
 
 const ThemePanel = ({ open, onClose }: ThemePanelProps) => {
-  const { mode, setMode, preset, setPreset, font, setFont, fontSize, setFontSize } = useTheme();
+  const { mode, setMode, preset, setPreset, font, setFont, fontSize, setFontSize, uiDesign, setUIDesign } = useTheme();
 
   const handleReset = () => {
     setMode("dark");
     setPreset("cyan");
     setFont("Public Sans");
     setFontSize(16);
+    setUIDesign("default");
   };
 
   if (!open) return null;
@@ -67,6 +100,38 @@ const ThemePanel = ({ open, onClose }: ThemePanelProps) => {
         </div>
 
         <div className="p-5 space-y-8">
+          {/* UI Design selector */}
+          <div>
+            <span className="inline-block bg-muted text-muted-foreground text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md mb-4">
+              UI Design
+            </span>
+            <div className="space-y-2">
+              {uiDesigns.map((d) => (
+                <button
+                  key={d.id}
+                  onClick={() => setUIDesign(d.id)}
+                  className={cn(
+                    "w-full flex items-center gap-3 p-3 rounded-xl border-2 transition-all text-left",
+                    uiDesign === d.id
+                      ? "border-primary bg-primary/5"
+                      : "border-border hover:border-muted-foreground/30"
+                  )}
+                >
+                  {/* Color preview */}
+                  <div className="flex-shrink-0 w-12 h-10 rounded-lg overflow-hidden flex">
+                    {d.colors.map((c, i) => (
+                      <div key={i} className="flex-1" style={{ backgroundColor: c }} />
+                    ))}
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-sm font-medium text-foreground truncate">{d.label}</div>
+                    <div className="text-[11px] text-muted-foreground truncate">{d.description}</div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
           {/* Mode selector */}
           <div className="flex rounded-xl bg-muted p-1 gap-1">
             {modes.map((m) => (
@@ -88,32 +153,34 @@ const ThemePanel = ({ open, onClose }: ThemePanelProps) => {
             ))}
           </div>
 
-          {/* Presets */}
-          <div>
-            <span className="inline-block bg-muted text-muted-foreground text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md mb-4">
-              Presets
-            </span>
-            <div className="grid grid-cols-3 gap-3">
-              {presets.map((p) => (
-                <button
-                  key={p.id}
-                  onClick={() => setPreset(p.id)}
-                  className={cn(
-                    "flex items-center justify-center h-16 rounded-xl border-2 transition-all",
-                    preset === p.id
-                      ? "border-primary bg-primary/5 shadow-md"
-                      : "border-border hover:border-muted-foreground/30"
-                  )}
-                >
-                  <div className="flex gap-0.5">
-                    <div className="w-3 h-8 rounded-sm" style={{ backgroundColor: p.color, opacity: 0.7 }} />
-                    <div className="w-3 h-8 rounded-sm" style={{ backgroundColor: p.color }} />
-                    <div className="w-3 h-8 rounded-sm" style={{ backgroundColor: p.color, opacity: 0.5 }} />
-                  </div>
-                </button>
-              ))}
+          {/* Presets - only show for default design */}
+          {uiDesign === "default" && (
+            <div>
+              <span className="inline-block bg-muted text-muted-foreground text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md mb-4">
+                Presets
+              </span>
+              <div className="grid grid-cols-3 gap-3">
+                {presets.map((p) => (
+                  <button
+                    key={p.id}
+                    onClick={() => setPreset(p.id)}
+                    className={cn(
+                      "flex items-center justify-center h-16 rounded-xl border-2 transition-all",
+                      preset === p.id
+                        ? "border-primary bg-primary/5 shadow-md"
+                        : "border-border hover:border-muted-foreground/30"
+                    )}
+                  >
+                    <div className="flex gap-0.5">
+                      <div className="w-3 h-8 rounded-sm" style={{ backgroundColor: p.color, opacity: 0.7 }} />
+                      <div className="w-3 h-8 rounded-sm" style={{ backgroundColor: p.color }} />
+                      <div className="w-3 h-8 rounded-sm" style={{ backgroundColor: p.color, opacity: 0.5 }} />
+                    </div>
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Font */}
           <div>

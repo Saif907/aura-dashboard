@@ -1,16 +1,26 @@
 import { Bell, Calendar, ChevronDown, Eye, MessageCircle, Palette, Users, X } from "lucide-react";
+import { useTheme } from "@/contexts/ThemeContext";
+import { cn } from "@/lib/utils";
 
 interface DashboardHeaderProps {
   onOpenTheme?: () => void;
 }
 
 const DashboardHeader = ({ onOpenTheme }: DashboardHeaderProps) => {
+  const { uiDesign } = useTheme();
+
   return (
-    <header className="sticky top-0 z-40 h-16 bg-sidebar backdrop-blur-[20px] border-b border-border shadow-header flex items-center justify-between px-6"
-    >
+    <header className={cn(
+      "header-design sticky top-0 z-40 bg-sidebar backdrop-blur-[20px] border-b border-border flex items-center justify-between px-6",
+      uiDesign === "phantom-noir" ? "h-14" : "h-16",
+      uiDesign === "phantom-noir" ? "shadow-none" : "shadow-header"
+    )}>
       {/* Left side */}
       <div className="flex items-center gap-3">
-        <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center">
+        <div className={cn(
+          "w-8 h-8 bg-muted flex items-center justify-center",
+          uiDesign === "phantom-noir" ? "rounded" : "rounded-full"
+        )}>
           <Users size={16} className="text-muted-foreground" />
         </div>
         <span className="text-sm font-medium text-foreground">No Accounts</span>
@@ -28,7 +38,10 @@ const DashboardHeader = ({ onOpenTheme }: DashboardHeaderProps) => {
         </button>
 
         {/* Date filter */}
-        <div className="flex items-center gap-2 bg-card border border-border rounded-lg px-3 py-2">
+        <div className={cn(
+          "flex items-center gap-2 bg-card border border-border px-3 py-2",
+          uiDesign === "phantom-noir" ? "rounded" : "rounded-lg"
+        )}>
           <Calendar size={16} className="text-muted-foreground" />
           <span className="text-sm text-foreground">All Time</span>
           <X size={14} className="text-muted-foreground cursor-pointer" />
