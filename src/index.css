@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Nunito+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Nunito+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -57,6 +57,10 @@
 
     --scrollbar-thumb: 210 10% 75%;
     --scrollbar-track: transparent;
+
+    --design-card-border: none;
+    --design-sidebar-effect: none;
+    --design-header-effect: none;
   }
 
   .dark {
@@ -107,6 +111,238 @@
     --scrollbar-thumb: 210 10% 30%;
     --scrollbar-track: transparent;
   }
+
+  /* =============================================
+     DESIGN 1: POLAR NIGHT
+     Deep navy-black with electric blue + frost
+     Sharp geometric, condensed, luminous edges
+     ============================================= */
+  .design-polar-night,
+  .design-polar-night.dark {
+    --font-family: 'Space Grotesk', sans-serif;
+    --radius: 8px;
+
+    --background: 222 47% 6%;
+    --foreground: 213 31% 91%;
+
+    --card: 222 41% 10%;
+    --card-foreground: 213 31% 91%;
+
+    --popover: 222 41% 10%;
+    --popover-foreground: 213 31% 91%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 6%;
+    --primary-light-bg: 217 91% 60% / 0.1;
+
+    --secondary: 222 35% 14%;
+    --secondary-foreground: 213 31% 91%;
+
+    --muted: 222 30% 13%;
+    --muted-foreground: 215 20% 50%;
+
+    --accent: 222 35% 14%;
+    --accent-foreground: 213 31% 91%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 217 50% 30% / 0.3;
+    --input: 217 50% 30% / 0.3;
+    --ring: 217 91% 60%;
+
+    --text-disabled: 215 15% 38%;
+    --surface-glass: 222 47% 6% / 0.85;
+
+    --sidebar-background: 222 47% 4%;
+    --sidebar-foreground: 215 20% 50%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-accent: 217 91% 60% / 0.08;
+    --sidebar-accent-foreground: 217 91% 65%;
+    --sidebar-border: 217 50% 30% / 0.2;
+    --sidebar-ring: 217 91% 60%;
+
+    --success: 160 84% 39%;
+    --loss: 0 72% 51%;
+
+    --scrollbar-thumb: 217 40% 25%;
+    --scrollbar-track: transparent;
+  }
+
+  /* =============================================
+     DESIGN 2: BURNT FORGE
+     Charcoal-brown with copper/amber warmth
+     Industrial, rugged, bold typography
+     ============================================= */
+  .design-burnt-forge,
+  .design-burnt-forge.dark {
+    --font-family: 'Outfit', sans-serif;
+    --radius: 6px;
+
+    --background: 20 15% 7%;
+    --foreground: 35 20% 90%;
+
+    --card: 20 12% 11%;
+    --card-foreground: 35 20% 90%;
+
+    --popover: 20 12% 11%;
+    --popover-foreground: 35 20% 90%;
+
+    --primary: 25 95% 53%;
+    --primary-foreground: 20 15% 7%;
+    --primary-light-bg: 25 95% 53% / 0.1;
+
+    --secondary: 20 10% 14%;
+    --secondary-foreground: 35 20% 90%;
+
+    --muted: 20 8% 14%;
+    --muted-foreground: 25 12% 45%;
+
+    --accent: 20 10% 14%;
+    --accent-foreground: 35 20% 90%;
+
+    --destructive: 0 65% 48%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 25 30% 22% / 0.4;
+    --input: 25 30% 22% / 0.4;
+    --ring: 25 95% 53%;
+
+    --text-disabled: 20 8% 35%;
+    --surface-glass: 20 15% 7% / 0.85;
+
+    --sidebar-background: 20 18% 5%;
+    --sidebar-foreground: 25 12% 45%;
+    --sidebar-primary: 25 95% 53%;
+    --sidebar-primary-foreground: 20 18% 5%;
+    --sidebar-accent: 25 95% 53% / 0.08;
+    --sidebar-accent-foreground: 25 95% 58%;
+    --sidebar-border: 25 30% 22% / 0.3;
+    --sidebar-ring: 25 95% 53%;
+
+    --success: 142 60% 40%;
+    --loss: 0 65% 48%;
+
+    --scrollbar-thumb: 25 20% 22%;
+    --scrollbar-track: transparent;
+  }
+
+  /* =============================================
+     DESIGN 3: PHANTOM NOIR
+     True black with silver + pale blue
+     Ultra-minimal, hairline borders, elegant
+     ============================================= */
+  .design-phantom-noir,
+  .design-phantom-noir.dark {
+    --font-family: 'Sora', sans-serif;
+    --radius: 4px;
+
+    --background: 0 0% 4%;
+    --foreground: 0 0% 88%;
+
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 88%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 88%;
+
+    --primary: 210 40% 70%;
+    --primary-foreground: 0 0% 4%;
+    --primary-light-bg: 210 40% 70% / 0.08;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 88%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 0 0% 10%;
+    --accent-foreground: 0 0% 88%;
+
+    --destructive: 0 60% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 210 40% 70%;
+
+    --text-disabled: 0 0% 32%;
+    --surface-glass: 0 0% 4% / 0.9;
+
+    --sidebar-background: 0 0% 2%;
+    --sidebar-foreground: 0 0% 45%;
+    --sidebar-primary: 210 40% 70%;
+    --sidebar-primary-foreground: 0 0% 2%;
+    --sidebar-accent: 210 40% 70% / 0.06;
+    --sidebar-accent-foreground: 210 40% 75%;
+    --sidebar-border: 0 0% 14%;
+    --sidebar-ring: 210 40% 70%;
+
+    --success: 160 50% 42%;
+    --loss: 0 60% 45%;
+
+    --scrollbar-thumb: 0 0% 20%;
+    --scrollbar-track: transparent;
+  }
+
+  /* =============================================
+     DESIGN 4: EMERALD VAULT
+     Dark forest with emerald + gold
+     Rich banking aesthetic, layered shadows
+     ============================================= */
+  .design-emerald-vault,
+  .design-emerald-vault.dark {
+    --font-family: 'DM Sans', sans-serif;
+    --radius: 12px;
+
+    --background: 160 30% 5%;
+    --foreground: 45 20% 92%;
+
+    --card: 160 22% 9%;
+    --card-foreground: 45 20% 92%;
+
+    --popover: 160 22% 9%;
+    --popover-foreground: 45 20% 92%;
+
+    --primary: 160 84% 39%;
+    --primary-foreground: 160 30% 5%;
+    --primary-light-bg: 160 84% 39% / 0.1;
+
+    --secondary: 160 18% 12%;
+    --secondary-foreground: 45 20% 92%;
+
+    --muted: 160 14% 12%;
+    --muted-foreground: 160 10% 42%;
+
+    --accent: 45 80% 56%;
+    --accent-foreground: 160 30% 5%;
+
+    --destructive: 0 65% 48%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 160 20% 18% / 0.4;
+    --input: 160 20% 18% / 0.4;
+    --ring: 160 84% 39%;
+
+    --text-disabled: 160 8% 32%;
+    --surface-glass: 160 30% 5% / 0.85;
+
+    --sidebar-background: 160 35% 3%;
+    --sidebar-foreground: 160 10% 42%;
+    --sidebar-primary: 160 84% 39%;
+    --sidebar-primary-foreground: 160 35% 3%;
+    --sidebar-accent: 160 84% 39% / 0.08;
+    --sidebar-accent-foreground: 160 84% 45%;
+    --sidebar-border: 160 20% 18% / 0.3;
+    --sidebar-ring: 160 84% 39%;
+
+    --success: 160 84% 39%;
+    --loss: 0 65% 48%;
+
+    --scrollbar-thumb: 160 15% 20%;
+    --scrollbar-track: transparent;
+  }
 }
 
 @layer base {
@@ -118,6 +354,73 @@
     @apply bg-background text-foreground;
     font-family: var(--font-family);
   }
+}
+
+/* ============================================
+   DESIGN-SPECIFIC COMPONENT OVERRIDES
+   ============================================ */
+
+/* Polar Night — luminous blue border glow on cards */
+.design-polar-night .card-design,
+.design-polar-night .bg-card {
+  box-shadow: 0 0 0 1px hsl(217 91% 60% / 0.1), 0 8px 32px -8px hsl(222 47% 2% / 0.6);
+}
+
+.design-polar-night .sidebar-design {
+  border-right: 1px solid hsl(217 91% 60% / 0.15);
+  box-shadow: inset -1px 0 0 hsl(217 91% 60% / 0.05);
+}
+
+.design-polar-night .header-design {
+  border-bottom: 1px solid hsl(217 91% 60% / 0.1);
+  box-shadow: 0 1px 20px hsl(217 91% 60% / 0.05);
+}
+
+/* Burnt Forge — warm inner glow, ember edges */
+.design-burnt-forge .card-design,
+.design-burnt-forge .bg-card {
+  box-shadow: 0 1px 0 hsl(25 30% 22% / 0.3), 0 12px 40px -12px hsl(20 15% 2% / 0.5);
+}
+
+.design-burnt-forge .sidebar-design {
+  border-right: 2px solid hsl(25 40% 18% / 0.4);
+}
+
+.design-burnt-forge .header-design {
+  border-bottom: 2px solid hsl(25 40% 18% / 0.3);
+  box-shadow: 0 2px 12px hsl(25 95% 53% / 0.04);
+}
+
+/* Phantom Noir — ultra-clean hairline borders */
+.design-phantom-noir .card-design,
+.design-phantom-noir .bg-card {
+  box-shadow: none;
+  border: 1px solid hsl(0 0% 16%);
+}
+
+.design-phantom-noir .sidebar-design {
+  border-right: 1px solid hsl(0 0% 12%);
+}
+
+.design-phantom-noir .header-design {
+  border-bottom: 1px solid hsl(0 0% 12%);
+  box-shadow: none;
+}
+
+/* Emerald Vault — rich layered depth */
+.design-emerald-vault .card-design,
+.design-emerald-vault .bg-card {
+  box-shadow: 0 2px 0 hsl(160 20% 12% / 0.5), 0 4px 16px hsl(160 30% 2% / 0.3), 0 16px 48px -16px hsl(160 30% 2% / 0.4);
+}
+
+.design-emerald-vault .sidebar-design {
+  border-right: 1px solid hsl(160 30% 15% / 0.4);
+  box-shadow: 4px 0 24px hsl(160 30% 2% / 0.3);
+}
+
+.design-emerald-vault .header-design {
+  border-bottom: 1px solid hsl(160 30% 15% / 0.3);
+  box-shadow: 0 4px 20px hsl(160 30% 2% / 0.2);
 }
 
 /* Custom scrollbar styles */

@@ -1,4 +1,6 @@
 import { TrendingUp, TrendingDown } from "lucide-react";
+import { useTheme } from "@/contexts/ThemeContext";
+import { cn } from "@/lib/utils";
 
 // Donut chart component
 const DonutChart = ({ percentage }: { percentage: number }) => {
@@ -33,12 +35,20 @@ interface MetricCardProps {
   className?: string;
 }
 
-const MetricCard = ({ label, children, className = "" }: MetricCardProps) => (
-  <div className={`bg-card rounded-lg p-6 shadow-card flex flex-col justify-between min-h-[162px] ${className}`}>
-    <span className="text-sm font-semibold text-foreground leading-[22px]">{label}</span>
-    <div className="flex-1 flex flex-col justify-center">{children}</div>
-  </div>
-);
+const MetricCard = ({ label, children, className = "" }: MetricCardProps) => {
+  const { uiDesign } = useTheme();
+
+  return (
+    <div className={cn(
+      "card-design bg-card p-6 shadow-card flex flex-col justify-between min-h-[162px]",
+      uiDesign === "phantom-noir" ? "rounded" : "rounded-lg",
+      className
+    )}>
+      <span className="text-sm font-semibold text-foreground leading-[22px]">{label}</span>
+      <div className="flex-1 flex flex-col justify-center">{children}</div>
+    </div>
+  );
+};
 
 const UpArrow = () => <TrendingUp size={14} className="text-success" />;
 const DownArrow = () => <TrendingDown size={14} className="text-loss" />;
@@ -48,7 +58,6 @@ const MetricCards = () => {
     <div className="space-y-6">
       {/* Row 1 - 4 cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-        {/* Win Rate */}
         <MetricCard label="Win Rate">
           <div className="flex items-center justify-between">
             <div>
@@ -65,7 +74,6 @@ const MetricCards = () => {
           </div>
         </MetricCard>
 
-        {/* PnL */}
         <MetricCard label="PnL">
           <div>
             <div className="flex items-baseline gap-2">
@@ -80,7 +88,6 @@ const MetricCards = () => {
           </div>
         </MetricCard>
 
-        {/* Account Balance */}
         <MetricCard label="Account Balance">
           <div>
             <span className="text-[28px] font-bold text-foreground">0</span>
@@ -92,7 +99,6 @@ const MetricCards = () => {
           </div>
         </MetricCard>
 
-        {/* Trade Count */}
         <MetricCard label="Trade Count">
           <div>
             <span className="text-[28px] font-bold text-foreground">0</span>
@@ -114,7 +120,6 @@ const MetricCards = () => {
 
       {/* Row 2 - 4 cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-        {/* Profit Factor */}
         <MetricCard label="Profit Factor">
           <div>
             <span className="text-[28px] font-bold text-foreground">0</span>
@@ -131,7 +136,6 @@ const MetricCards = () => {
           </div>
         </MetricCard>
 
-        {/* Volume */}
         <MetricCard label="Volume">
           <div>
             <span className="text-[28px] font-bold text-foreground">0</span>
@@ -148,7 +152,6 @@ const MetricCards = () => {
           </div>
         </MetricCard>
 
-        {/* Average Holding Time */}
         <MetricCard label="Average Holding Time">
           <div>
             <span className="text-[28px] font-bold text-primary">0s</span>
@@ -165,7 +168,6 @@ const MetricCards = () => {
           </div>
         </MetricCard>
 
-        {/* Streak */}
         <MetricCard label="Streak">
           <div className="grid grid-cols-2 gap-2">
             <div className="flex items-baseline gap-1">
