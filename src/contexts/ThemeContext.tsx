@@ -62,7 +62,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   // Apply UI design class
   useEffect(() => {
     const root = document.documentElement;
-    const designs: UIDesign[] = ["default", "polar-night", "burnt-forge", "phantom-noir", "emerald-vault"];
+    const designs: UIDesign[] = ["default", "polar-night", "burnt-forge", "phantom-noir", "emerald-vault", "obsidian-dusk", "deep-tide"];
     designs.forEach(d => root.classList.remove(`design-${d}`));
     if (uiDesign !== "default") {
       root.classList.add(`design-${uiDesign}`);

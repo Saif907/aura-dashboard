@@ -56,6 +56,18 @@ const uiDesigns: { id: UIDesign; label: string; description: string; colors: str
     description: "Dark forest, emerald & gold",
     colors: ["#0A1A14", "#10B981", "#142A20"],
   },
+  {
+    id: "obsidian-dusk",
+    label: "Obsidian Dusk",
+    description: "Warm slate, calming periwinkle",
+    colors: ["#121420", "#8B7FCF", "#1C1E2E"],
+  },
+  {
+    id: "deep-tide",
+    label: "Deep Tide",
+    description: "Teal depth, warm coral glow",
+    colors: ["#0F1A1F", "#CC7055", "#172428"],
+  },
 ];
 
 interface ThemePanelProps {
