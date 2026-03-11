@@ -343,6 +343,124 @@
     --scrollbar-thumb: 160 15% 20%;
     --scrollbar-track: transparent;
   }
+
+  /* =============================================
+     DESIGN 5: OBSIDIAN DUSK
+     Warm slate-charcoal with muted periwinkle
+     Calming, trust-building, reduces eye fatigue
+     Rounded & friendly — long-session optimized
+     ============================================= */
+  .design-obsidian-dusk,
+  .design-obsidian-dusk.dark {
+    --font-family: 'Nunito Sans', sans-serif;
+    --radius: 14px;
+
+    --background: 232 18% 8%;
+    --foreground: 235 15% 93%;
+
+    --card: 230 16% 12%;
+    --card-foreground: 235 15% 93%;
+
+    --popover: 230 16% 12%;
+    --popover-foreground: 235 15% 93%;
+
+    --primary: 252 42% 64%;
+    --primary-foreground: 232 18% 8%;
+    --primary-light-bg: 252 42% 64% / 0.1;
+
+    --secondary: 230 14% 15%;
+    --secondary-foreground: 235 15% 93%;
+
+    --muted: 230 12% 15%;
+    --muted-foreground: 232 14% 48%;
+
+    --accent: 230 14% 15%;
+    --accent-foreground: 235 15% 93%;
+
+    --destructive: 0 62% 52%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 15% 22% / 0.35;
+    --input: 240 15% 22% / 0.35;
+    --ring: 252 42% 64%;
+
+    --text-disabled: 232 10% 36%;
+    --surface-glass: 232 18% 8% / 0.88;
+
+    --sidebar-background: 232 20% 6%;
+    --sidebar-foreground: 232 14% 48%;
+    --sidebar-primary: 252 42% 64%;
+    --sidebar-primary-foreground: 232 20% 6%;
+    --sidebar-accent: 252 42% 64% / 0.09;
+    --sidebar-accent-foreground: 252 42% 70%;
+    --sidebar-border: 240 15% 20% / 0.25;
+    --sidebar-ring: 252 42% 64%;
+
+    --success: 158 55% 46%;
+    --loss: 0 62% 52%;
+
+    --scrollbar-thumb: 235 12% 22%;
+    --scrollbar-track: transparent;
+  }
+
+  /* =============================================
+     DESIGN 6: DEEP TIDE
+     Dark teal-gray with warm coral accents
+     Balanced, inviting, professional warmth
+     Reduces intimidation, boosts session comfort
+     ============================================= */
+  .design-deep-tide,
+  .design-deep-tide.dark {
+    --font-family: 'Inter', sans-serif;
+    --radius: 10px;
+
+    --background: 200 22% 7%;
+    --foreground: 38 18% 91%;
+
+    --card: 198 18% 11%;
+    --card-foreground: 38 18% 91%;
+
+    --popover: 198 18% 11%;
+    --popover-foreground: 38 18% 91%;
+
+    --primary: 12 55% 60%;
+    --primary-foreground: 200 22% 7%;
+    --primary-light-bg: 12 55% 60% / 0.1;
+
+    --secondary: 198 15% 14%;
+    --secondary-foreground: 38 18% 91%;
+
+    --muted: 198 12% 14%;
+    --muted-foreground: 200 12% 46%;
+
+    --accent: 198 15% 14%;
+    --accent-foreground: 38 18% 91%;
+
+    --destructive: 0 58% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 200 18% 20% / 0.35;
+    --input: 200 18% 20% / 0.35;
+    --ring: 12 55% 60%;
+
+    --text-disabled: 200 10% 35%;
+    --surface-glass: 200 22% 7% / 0.88;
+
+    --sidebar-background: 200 25% 5%;
+    --sidebar-foreground: 200 12% 46%;
+    --sidebar-primary: 12 55% 60%;
+    --sidebar-primary-foreground: 200 25% 5%;
+    --sidebar-accent: 12 55% 60% / 0.09;
+    --sidebar-accent-foreground: 12 55% 66%;
+    --sidebar-border: 200 18% 18% / 0.25;
+    --sidebar-ring: 12 55% 60%;
+
+    --success: 162 50% 44%;
+    --loss: 0 58% 50%;
+
+    --scrollbar-thumb: 200 14% 22%;
+    --scrollbar-track: transparent;
+  }
 }
 
 @layer base {
