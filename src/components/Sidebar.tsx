@@ -84,7 +84,9 @@ const Sidebar = ({ collapsed, onToggle }: SidebarProps) => {
         <nav className={cn(
           "flex-1 px-3 space-y-0.5 overflow-y-auto scrollbar-sidebar",
           uiDesign === "phantom-noir" && "space-y-[2px]",
-          uiDesign === "polar-night" && "space-y-1"
+          uiDesign === "polar-night" && "space-y-1",
+          uiDesign === "obsidian-dusk" && "space-y-1 px-4",
+          uiDesign === "deep-tide" && "space-y-[3px]"
         )}>
           {mainNavItems.map((item) => (
             <NavItemRow
