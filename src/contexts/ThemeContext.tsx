@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState, ReactNode } from "react
 export type ThemeMode = "light" | "dark" | "system";
 export type ThemePreset = "cyan" | "blue" | "purple" | "orange" | "green" | "red";
 export type ThemeFont = "Public Sans" | "Inter" | "DM Sans" | "Nunito Sans";
-export type UIDesign = "default" | "polar-night" | "burnt-forge" | "phantom-noir" | "emerald-vault";
+export type UIDesign = "default" | "polar-night" | "burnt-forge" | "phantom-noir" | "emerald-vault" | "obsidian-dusk" | "deep-tide";
 
 interface ThemeContextType {
   mode: ThemeMode;
