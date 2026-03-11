@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState, ReactNode } from "react
 export type ThemeMode = "light" | "dark" | "system";
 export type ThemePreset = "cyan" | "blue" | "purple" | "orange" | "green" | "red";
 export type ThemeFont = "Public Sans" | "Inter" | "DM Sans" | "Nunito Sans";
-export type UIDesign = "default" | "polar-night" | "burnt-forge" | "phantom-noir" | "emerald-vault";
+export type UIDesign = "default" | "polar-night" | "burnt-forge" | "phantom-noir" | "emerald-vault" | "obsidian-dusk" | "deep-tide";
 
 interface ThemeContextType {
   mode: ThemeMode;
@@ -62,7 +62,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   // Apply UI design class
   useEffect(() => {
     const root = document.documentElement;
-    const designs: UIDesign[] = ["default", "polar-night", "burnt-forge", "phantom-noir", "emerald-vault"];
+    const designs: UIDesign[] = ["default", "polar-night", "burnt-forge", "phantom-noir", "emerald-vault", "obsidian-dusk", "deep-tide"];
     designs.forEach(d => root.classList.remove(`design-${d}`));
     if (uiDesign !== "default") {
       root.classList.add(`design-${uiDesign}`);

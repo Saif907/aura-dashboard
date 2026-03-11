@@ -84,7 +84,9 @@ const Sidebar = ({ collapsed, onToggle }: SidebarProps) => {
         <nav className={cn(
           "flex-1 px-3 space-y-0.5 overflow-y-auto scrollbar-sidebar",
           uiDesign === "phantom-noir" && "space-y-[2px]",
-          uiDesign === "polar-night" && "space-y-1"
+          uiDesign === "polar-night" && "space-y-1",
+          uiDesign === "obsidian-dusk" && "space-y-1 px-4",
+          uiDesign === "deep-tide" && "space-y-[3px]"
         )}>
           {mainNavItems.map((item) => (
             <NavItemRow
@@ -120,8 +122,9 @@ function NavItemRow({ item, collapsed, active, design }: { item: NavItem; collap
       onClick={() => item.path && navigate(item.path)}
       className={cn(
         "w-full flex items-center gap-3 h-11 px-3 transition-colors text-sm font-normal",
-        design === "phantom-noir" ? "rounded" : "rounded-lg",
+        design === "phantom-noir" ? "rounded" : design === "obsidian-dusk" ? "rounded-xl" : design === "deep-tide" ? "rounded-lg" : "rounded-lg",
         design === "polar-night" && "h-10",
+        design === "obsidian-dusk" && "h-[42px]",
         active
           ? "bg-sidebar-accent text-sidebar-accent-foreground"
           : "text-sidebar-foreground hover:bg-sidebar-accent/50"
